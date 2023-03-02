@@ -52,7 +52,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../styles/index.scss';
+@import '~@/styles/variables';
 .main {
   display: flex;
   height: 100vh;

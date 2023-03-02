@@ -4,7 +4,7 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
@@ -46,6 +46,20 @@ module.exports = {
         loader: 'vue-loader',
         options: vueLoaderConfig
       },
+     /*
+      * {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader', {
+          loader: 'style-resources-loader',
+          options: {
+            patterns: [
+              resolve('node_modules/element-ui/packages/theme-chalk/src/common/*.scss'),
+              //'./path/from/context/to/scss/mixins/*.scss',
+            ]
+          }
+        }]
+      },
+      * */ 
       {
         test: /\.js$/,
         loader: 'babel-loader',

@@ -18,5 +18,14 @@ module.exports = {
     source: 'src',
     img: 'src',
     image: 'xlink:href'
-  }
+  },
+  css: {
+    loaderOptions: {
+      sass: {
+        prependData: `
+          @import "@/assets/theme/vars.scss;
+        `,
+      },
+    },
+  },
 }

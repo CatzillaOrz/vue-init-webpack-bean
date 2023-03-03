@@ -54,6 +54,9 @@ export default {
       display: flex;
       justify-content: space-between;
     }
+    .el-main{
+        padding: 0;
+      }
   }
 }
 </style>

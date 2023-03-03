@@ -1,11 +1,6 @@
 <template>
   <section class="app-main">
-    <p>Main container</p>
-    <transition name="fade-transform" mode="out-in" attr="效果2">
-      <keep-alive :include="cachedViews">
-        <router-view :key="key"></router-view>
-      </keep-alive>
-    </transition>
+    <router-view></router-view>
   </section>
 </template>
 
@@ -30,6 +25,7 @@ export default {
 </script>
 <style lang="scss">
 .app-main {
+  height: 100%;
   margin: 10px auto;
   color: blue;
 }

@@ -53,6 +53,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '~@/styles/variables';
+
 .main {
   display: flex;
   height: 100vh;

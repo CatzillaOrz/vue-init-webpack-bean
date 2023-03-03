@@ -12,7 +12,9 @@
           <el-main>
             <app-main></app-main>
           </el-main>
-          <el-footer>Footer</el-footer>
+          <el-footer>
+          <app-footer/>
+          </el-footer>
         </el-container>
       </el-container>
     </el-container>
@@ -20,13 +22,13 @@
 </template>
 
 <script>
-import { AppMain, Navbar, Sidebar } from './components';
+import { AppMain, Navbar, Sidebar , AppFooter} from './components';
 
 
 export default {
   name: "Layout",
   components: {
-    AppMain, Navbar, Sidebar
+    AppMain, Navbar, Sidebar, AppFooter
   },
   data() {
     return {

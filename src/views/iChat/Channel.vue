@@ -17,6 +17,9 @@
 <script>
 import EventBus from '@/api/service/EventBus'
 import ChannelRoom from './room/index'
+import { mapStores } from 'pinia'
+import {useCounterStore} from '@/stores/counter'
+
 export default {
   name: 'channel',
   components: {
@@ -29,19 +32,26 @@ export default {
   },
   mounted() {
     EventBus.on('book.added', this.addBook);
+    console.log(this.counterStore.count)
+    this.counterStore.increment()
+    console.log(this.counterStore.count)
   },
   computed: {
     bookShell() {
       return this.book
-    }
+    },
+    //mapStores
+    ...mapStores(useCounterStore)
   },
   methods: {
     addBook(book) {
+      console.log(this.counterStore.count)
       this.book.push(book);
     }
   },
   beforeDestroy() {
     console.log('destroyed book')
+    this.counterStore.clear()
     EventBus.off('book.added', this.addBook);
 
   },

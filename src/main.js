@@ -6,14 +6,19 @@ import router from './router'
 import './plugins/element.js'
 import './styles/index.scss'
 import axios from 'axios'
+import { createPinia, PiniaVuePlugin } from 'pinia'
 
 Vue.config.productionTip = false
+Vue.use(PiniaVuePlugin)
 Vue.prototype.$axios = axios;
+const pinia = createPinia()
+
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  pinia,
 })

@@ -15,10 +15,12 @@
     "element-ui": "^2.15.13",
     "mitt": "^3.0.0",
     "ol": "^7.2.2",
+    "pinia": "^2.0.32",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
+    "@vue/composition-api": "^1.7.1",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^8.2.1",

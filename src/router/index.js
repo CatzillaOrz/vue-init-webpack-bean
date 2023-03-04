@@ -18,6 +18,12 @@ export const constantRouterMap = [
         name: 'mapIndex',
         meta: { title: 'MyApp', icon: 'index', noCache: true, },
       },
+      {
+        path: 'chat',
+        component: _import('iChat/Channel'),
+        name: 'chatting',
+        meta: { title: 'chapRoom', icon: 'index', noCache: true, },
+      }
     ],
 
   }

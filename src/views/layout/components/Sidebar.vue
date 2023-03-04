@@ -22,14 +22,19 @@ export default {
     return {
       sub_menu: [
         {
-          title: "Title1",
+          title: "Dashboard",
           icon: "el-icon-s-tools",
           children: [
             {
-              title: "Admin",
-              path: "/admin",
+              title: "MapStore",
+              path: "/map",
               icon: "el-icon-s-tools"
-            }
+            },
+            {
+              title: "BookStore",
+              path: "/chat",
+              icon: "el-icon-s-tools"
+            },
           ]
         }
       ]
@@ -43,13 +48,14 @@ export default {
 
 <style lang="scss" scoped>
 @import '~@/styles/variables';
+
 .el-menu {
   height: 100%;
   background: $background-color-base;
 
   .el-menu-item {
     &.is-active {
-      background-color: green;
+      background-color: $primary;
     }
   }
 }

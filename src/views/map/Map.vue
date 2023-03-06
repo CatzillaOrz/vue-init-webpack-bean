@@ -14,12 +14,12 @@
     </div>
     <div ref="editPoint" class="editPoint" :style="{ 'display': contextmenuPopup ? 'flex' : 'none' }">
       <template v-if="contextmenuPopStatus && !disableMenuOption">
-        <el-button icon="el-icon-delete" @click="del">删除数据</el-button>
-        <el-button icon="el-icon-edit" @click="del">编辑数据</el-button>
-        <el-button icon="el-icon-search" @click="del">查看详情</el-button>
+        <el-button icon="el-icon-delete" @click.stop="del">删除数据</el-button>
+        <el-button icon="el-icon-edit" @click.stop="del">编辑数据</el-button>
+        <el-button icon="el-icon-search" @click.stop="detail">查看详情</el-button>
       </template>
       <template v-if="!contextmenuPopStatus && !disableMenu">
-        <el-button icon="el-icon-edit" @click="del">新增数据</el-button>
+        <el-button icon="el-icon-edit" @click.stop="del">新增数据</el-button>
       </template>
 
     </div>
@@ -162,6 +162,10 @@ export default {
         this.mapService.drawPolygonFeature(new Date().getTime(), e);
       });
     },
+    detail() {
+      this.clearOverlay()
+      this.$emit('detail', { data: 'detail' , status: 200})
+    }
   },
 };
 </script>

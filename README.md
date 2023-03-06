@@ -30,3 +30,13 @@ vue init webpack [project-name]
 vue add element
 ```
 
+## Pinia
+
+```bash
+yarn add pinia
+# 或者使用 npm
+# 如果你的应用使用的 Vue 版本低于 2.7，你还需要安装组合式 API 包. [LinkTo](https://pinia.vuejs.org/zh/getting-started.htm
+npm i @vue/composition-api
+npm install pinia
+
+```

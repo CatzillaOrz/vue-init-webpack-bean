@@ -1,11 +1,12 @@
 <template>
   <div class="ecology-main">
-    <map-feature v-bind:disable-config="['PopupInfo','Menu','OptionMenu']"/> 
+    <map-feature v-bind:disable-config="disableConfig"/> 
   </div>
 </template>
 
 <script>
 import mapFeature from '@/views/map/Map'
+import {mapFeatureConfig as config} from '@/views/map/Map'
 export default {
   name: 'ecology',
   components: {
@@ -13,7 +14,7 @@ export default {
   },
   data() {
     return {
-
+      disableConfig:[config.POPUP_INFO,config.MENU, config.OPTION_MENU] 
     }
   },
   methods: {

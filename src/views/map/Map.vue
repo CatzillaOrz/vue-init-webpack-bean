@@ -2,7 +2,7 @@
   <div style="height: 100%;">
     <div ref="map" class="map"></div>
 
-    <div ref="pointInfo" class="pointInfo" :style="{ 'display': cachedDetail ? 'block' : 'none' }">
+    <div ref="pointInfo" class="pointInfo" :style="{ 'display': cachedDetail && !disableInfo ? 'block' : 'none' }">
       <p>数据层级：xxx</p>
       <p>销售区域：xxx</p>
       <p>生态公司类型：xxx</p>
@@ -13,12 +13,12 @@
       <p>操作人员：xxx</p>
     </div>
     <div ref="editPoint" class="editPoint" :style="{ 'display': contextmenuPopup ? 'flex' : 'none' }">
-      <template v-if="contextmenuPopStatus">
+      <template v-if="contextmenuPopStatus && !disableMenuOption">
         <el-button icon="el-icon-delete" @click="del">删除数据</el-button>
         <el-button icon="el-icon-edit" @click="del">编辑数据</el-button>
         <el-button icon="el-icon-search" @click="del">查看详情</el-button>
       </template>
-      <template v-if="!contextmenuPopStatus">
+      <template v-if="!contextmenuPopStatus && !disableMenu">
         <el-button icon="el-icon-edit" @click="del">新增数据</el-button>
       </template>
 
@@ -60,9 +60,8 @@ export default {
         //this.removeFeatureByIds('1')
         this.mapService.setMapCenterAnimate(mapConfig.map_center)
       }, 3000)
-      console.log(this.disableConfig)
-      this.initMap()
     })
+    this.initMap()
   },
   computed: {
     cachedDetail: {
@@ -90,7 +89,7 @@ export default {
     initMap() {
       this.map = this.mapService.initMap(this.$refs.map)
       this.drawPoints();
-      if (!this.disableInfo) { this.addMapListener() }
+      this.addMapListener()
       this.addMapContextmenuListener();
     },
     drawPoints() {
@@ -101,10 +100,8 @@ export default {
         this.clearOverlay();
         const { values_ } = feature;
         if (values_ && values_.id && values_.coordinate) {
-          if (this.disableMenu) return
           this.contextmenuPopup = values_;
         } else if (feature.coordinate) {
-          if (this.disableMenuOption) return
           this.contextmenuPopup = true;
           this.mapService.addOverlay(this.$refs.editPoint, { coordinate: feature.coordinate });
         }

@@ -23,6 +23,12 @@ export const constantRouterMap = [
         component: _import('iChat/Channel'),
         name: 'chatting',
         meta: { title: 'chapRoom', icon: 'index', noCache: true, },
+      },
+      {
+        path: 'ecology',
+        component: _import('ecology/index'),
+        name: 'ecolog',
+        meta: { title: 'ecology', icon: 'index', noCache: true, },
       }
     ],
 

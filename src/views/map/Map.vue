@@ -29,8 +29,17 @@
 <script>
 import { MapService } from '@/views/map/service/mapService'
 import mapConfig from '@/config/map.config'
+export const mapFeatureConfig = {
+  POPUP_INFO: 'PopupInfo', MENU: 'Menu', OPTION_MENU: 'OptionMenu'
+}
 export default {
   name: "mapFeature",
+  props: {
+    disableConfig: {//disable-config="['PopupInfo','Menu','OptionMenu']"
+      type: Array,
+      default: () => []
+    }
+  },
   data() {
     return {
       map: null,
@@ -51,8 +60,9 @@ export default {
         //this.removeFeatureByIds('1')
         this.mapService.setMapCenterAnimate(mapConfig.map_center)
       }, 3000)
+      console.log(this.disableConfig)
+      this.initMap()
     })
-    this.initMap()
   },
   computed: {
     cachedDetail: {
@@ -65,14 +75,22 @@ export default {
     },
     contextmenuPopStatus() {
       return this.contextmenuPopup && this.contextmenuPopup.id
+    },
+    disableInfo() {
+      return this.disableConfig.indexOf(mapFeatureConfig.POPUP_INFO) > -1
+    },
+    disableMenu() {
+      return this.disableConfig.indexOf(mapFeatureConfig.MENU) > -1
+    },
+    disableMenuOption() {
+      return this.disableConfig.indexOf(mapFeatureConfig.OPTION_MENU) > -1
     }
-
   },
   methods: {
     initMap() {
       this.map = this.mapService.initMap(this.$refs.map)
       this.drawPoints();
-      this.addMapListener();
+      if (!this.disableInfo) { this.addMapListener() }
       this.addMapContextmenuListener();
     },
     drawPoints() {
@@ -83,8 +101,10 @@ export default {
         this.clearOverlay();
         const { values_ } = feature;
         if (values_ && values_.id && values_.coordinate) {
+          if (this.disableMenu) return
           this.contextmenuPopup = values_;
         } else if (feature.coordinate) {
+          if (this.disableMenuOption) return
           this.contextmenuPopup = true;
           this.mapService.addOverlay(this.$refs.editPoint, { coordinate: feature.coordinate });
         }
@@ -144,7 +164,7 @@ export default {
       data.forEach(e => {
         this.mapService.drawPolygonFeature(new Date().getTime(), e);
       });
-    }
+    },
   },
 };
 </script>

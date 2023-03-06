@@ -35,6 +35,11 @@ export default {
               path: "/chat",
               icon: "el-icon-s-tools"
             },
+            {
+              title: "Ecology",
+              path: "/ecology",
+              icon: "el-icon-s-tools"
+            }
           ]
         }
       ]

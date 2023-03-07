@@ -34,8 +34,13 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      'vue$': 'vue/dist/vue.esm.js',
+      'vue': 'vue/dist/vue.esm.js',
+      '@lib': resolve('/src/libs'),
+      '@util': resolve('/src/utils'),
+      '@static': resolve('/static'),
+      '@config': resolve('/config'),
     }
   },
   module: {
@@ -46,20 +51,20 @@ module.exports = {
         loader: 'vue-loader',
         options: vueLoaderConfig
       },
-     /*
-      * {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader', {
-          loader: 'style-resources-loader',
-          options: {
-            patterns: [
-              resolve('node_modules/element-ui/packages/theme-chalk/src/common/*.scss'),
-              //'./path/from/context/to/scss/mixins/*.scss',
-            ]
-          }
-        }]
-      },
-      * */ 
+      /*
+       * {
+         test: /\.scss$/,
+         use: ['style-loader', 'css-loader', 'sass-loader', {
+           loader: 'style-resources-loader',
+           options: {
+             patterns: [
+               resolve('node_modules/element-ui/packages/theme-chalk/src/common/*.scss'),
+               //'./path/from/context/to/scss/mixins/*.scss',
+             ]
+           }
+         }]
+       },
+       * */
       {
         test: /\.js$/,
         loader: 'babel-loader',

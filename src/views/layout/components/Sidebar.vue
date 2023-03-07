@@ -39,6 +39,11 @@ export default {
               title: "Ecology",
               path: "/ecology",
               icon: "el-icon-s-tools"
+            },
+            {
+              title: "Register",
+              path: "/register",
+              icon: "el-icon-s-tools"
             }
           ]
         }

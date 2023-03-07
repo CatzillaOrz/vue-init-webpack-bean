@@ -29,6 +29,12 @@ export const constantRouterMap = [
         component: _import('ecology/index'),
         name: 'ecolog',
         meta: { title: 'ecology', icon: 'index', noCache: true, },
+      },
+      {
+        path: 'register',
+        component: _import('form/index'),
+        name: 'register',
+        meta: { title: 'userRegistry', icon: 'index', noCache: true, },
       }
     ],
 

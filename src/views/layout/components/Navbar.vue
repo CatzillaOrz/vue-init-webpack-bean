@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@/styles/variables';
+@import '@/styles/variables';
 .nav-bar {
   position: relative;
   display: flex;

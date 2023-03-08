@@ -70,8 +70,9 @@ export class MapService {
         image: new Icon({
           anchor: [0.5, 0.9],
           imgSize: [40, 40],
-          src: require('@/assets/images/marker.png'),
+          src:new URL('../../../assets/images/marker.png', import.meta.url).href,
           //src: require('../../assets/images/marker.png'),
+          //vite: new URL(`./dir/${name}.png`, import.meta.url).href
           rotateWithView: false,
         })
       }));

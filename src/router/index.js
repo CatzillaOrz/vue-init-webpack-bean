@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Layout from '@/views/layout/Layout'
-const _import = require('./_import_' + process.env.NODE_ENV)
+import MapView from '@/views/map/Map'
+import FormView from '@/views/form/index'
+import ChannelView from '@/views/iChat/Channel'
+import EcologyView from '@/views/ecology/index'
 
 Vue.use(Router)
 
@@ -14,25 +17,25 @@ export const constantRouterMap = [
     children: [
       {
         path: 'map',
-        component: _import('map/Map'),
+        component: MapView,
         name: 'mapIndex',
         meta: { title: 'MyApp', icon: 'index', noCache: true, },
       },
       {
         path: 'chat',
-        component: _import('iChat/Channel'),
+        component: ChannelView,
         name: 'chatting',
         meta: { title: 'chapRoom', icon: 'index', noCache: true, },
       },
       {
         path: 'ecology',
-        component: _import('ecology/index'),
+        component: EcologyView,
         name: 'ecolog',
         meta: { title: 'ecology', icon: 'index', noCache: true, },
       },
       {
         path: 'register',
-        component: _import('form/index'),
+        component: FormView,
         name: 'register',
         meta: { title: 'userRegistry', icon: 'index', noCache: true, },
       }

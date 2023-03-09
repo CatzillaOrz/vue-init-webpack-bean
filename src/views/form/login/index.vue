@@ -19,7 +19,7 @@
 
     <el-row type="flex" justify="center" v-bind:gutter="20">
       <el-col :span="12">
-        <el-button type="primary" @click="onSubmit">登陆</el-button>
+        <el-button type="primary" @click="onSubmit">立即创建</el-button>
         <el-button @click="cancel">取消</el-button>
       </el-col>
     </el-row>
@@ -54,10 +54,10 @@ export default {
   },
   methods: {
     afterFormChanged() {
+      console.log('updated:form')
       this.ruleForm = {
         ...this.form
       }
-//      this.$emit('update:formData', this.ruleForm);
     },
     onSubmit() {
       console.log('beforeSubmit')

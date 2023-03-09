@@ -1,0 +1,31 @@
+<template>
+  <div class="app-login">
+    <div class="login-layout">
+      <login-form v-bind:form-data="userForm" @update:formData="loginAction"></login-form>
+    </div>
+
+  </div>
+</template>
+<script>
+import {UserMixin} from '@lib'
+import loginForm from '@/views/form/login/index.vue'
+export default {
+  name: 'login',
+  mixins: [UserMixin],
+  components: {
+    loginForm
+  },
+  data() {
+    return {
+      userForm: {name: '', email: ''}
+    }
+  },
+  methods: {
+    loginAction(user) {
+      if(!user.name) this.logout()
+      //this.login(user)
+      //this.$router.push({path: 'app'})
+    }
+  },
+}
+</script>

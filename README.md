@@ -40,3 +40,10 @@ npm i @vue/composition-api
 npm install pinia
 
 ```
+
+## vue2.7
+
+- VueLoaderPlugin(webpack.config)
+- "eslint-plugin-vue": "^9.9.0"(require nvm use 16)
+
+`-    "eslint-plugin-vue": "^9.9.0",`

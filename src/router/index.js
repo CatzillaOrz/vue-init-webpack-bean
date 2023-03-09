@@ -1,13 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Layout from '@/views/layout/Layout'
+import Layout from '@/views/layout/Layout.vue'
 const _import = require('./_import_' + process.env.NODE_ENV)
+import Login from '@/views/auth/Login.vue'
 
 Vue.use(Router)
 
 export const constantRouterMap = [
   {
-    path: '',
+    path: '/',
     name: 'layout',
     component: Layout,
     redirect: 'map',
@@ -38,7 +39,13 @@ export const constantRouterMap = [
       }
     ],
 
+  },
+  {
+    path: 'login',
+    name: 'login',
+    component: Login,
   }
+
 ]
 
 const createRouter = (router = []) =>

@@ -1,13 +1,13 @@
 <template>
   <div class="app-login">
     <div class="login-layout">
-      <login-form v-bind:form-data="userForm" @update:formData="loginAction"></login-form>
+      <login-form v-bind:form-data="userForm" @login="loginAction"></login-form>
     </div>
 
   </div>
 </template>
 <script>
-import {UserMixin} from '@lib'
+import { UserMixin } from '@lib'
 import loginForm from '@/views/form/login/index.vue'
 export default {
   name: 'login',
@@ -17,15 +17,21 @@ export default {
   },
   data() {
     return {
-      userForm: {name: '', email: ''}
+      userForm: { name: '', email: '' }
     }
   },
   methods: {
     loginAction(user) {
-      if(!user.name) this.logout()
-      //this.login(user)
-      //this.$router.push({path: 'app'})
+      if (!user) this.logout()
+      this.login(user)
+      this.$router.push({ path: '/map' })
     }
   },
 }
 </script>
+
+<style>
+.app-login {
+  height: 100%;
+}
+</style>

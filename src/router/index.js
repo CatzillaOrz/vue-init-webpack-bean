@@ -11,28 +11,28 @@ export const constantRouterMap = [
     path: '/',
     name: 'layout',
     component: Layout,
-    redirect: 'map',
+    redirect: '/login',
     children: [
       {
-        path: 'map',
+        path: '/map',
         component: _import('map/Map'),
         name: 'mapIndex',
         meta: { title: 'MyApp', icon: 'index', noCache: true, },
       },
       {
-        path: 'chat',
+        path: '/chat',
         component: _import('iChat/Channel'),
         name: 'chatting',
         meta: { title: 'chapRoom', icon: 'index', noCache: true, },
       },
       {
-        path: 'ecology',
+        path: '/ecology',
         component: _import('ecology/index'),
         name: 'ecolog',
         meta: { title: 'ecology', icon: 'index', noCache: true, },
       },
       {
-        path: 'register',
+        path: '/register',
         component: _import('form/index'),
         name: 'register',
         meta: { title: 'userRegistry', icon: 'index', noCache: true, },
@@ -41,7 +41,7 @@ export const constantRouterMap = [
 
   },
   {
-    path: 'login',
+    path: '/login',
     name: 'login',
     component: Login,
   }

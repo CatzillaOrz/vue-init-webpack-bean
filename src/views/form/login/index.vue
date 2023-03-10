@@ -57,13 +57,12 @@ export default {
       this.ruleForm = {
         ...this.form
       }
-//      this.$emit('update:formData', this.ruleForm);
+      console.log('ruleForm loaded:' + this.ruleForm)
     },
     onSubmit() {
-      console.log('beforeSubmit')
-      console.log(this.ruleForm);
-      const { submit } = this;
-      submit()
+      console.log('onSubmit')
+      this.$emit('login', this.ruleForm);
+      this.submit()
     }
   },
 }

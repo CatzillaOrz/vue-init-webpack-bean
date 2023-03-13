@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+//import './router/before'
 import './plugins/element.js'
 import './styles/index.scss'
 import axios from 'axios'

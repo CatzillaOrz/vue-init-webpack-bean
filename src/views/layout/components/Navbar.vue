@@ -1,6 +1,8 @@
 <template>
   <div class="nav-bar">
+  <router-link to="/">
     <h2>Header Mock</h2>
+  </router-link>
   </div>
 </template>
 

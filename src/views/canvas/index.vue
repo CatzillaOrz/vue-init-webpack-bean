@@ -1,18 +1,19 @@
 <template>
   <div class="app-canvas">
-    Hello canvas
-
+    <canvas-nav />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
+import canvasNav from './components/canvasNav.vue';
 export default {
   data() {
     return {
 
     }
   },
-
+  components: { canvasNav },
   methods: {
 
   },

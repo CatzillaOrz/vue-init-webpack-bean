@@ -1,7 +1,7 @@
 <template>
   <section>
     <el-menu class="el-menu-vertical-demo" active-text-color="#fff" router :default-active="$route.path">
-      <el-submenu v-for="(item, index) in sub_menu" :key="index" :index="index.toString()">
+      <el-submenu v-for="(item, index) in sub_menu" :key="index" :index="item.path">
         <template slot="title">
           <i :class="item.icon"></i>
           <span>{{ item.title }}</span>
@@ -21,9 +21,16 @@ export default {
   data() {
     return {
       sub_menu: [
+        /** {
+           title: "CanvasBoard",
+           icon: "el-icon-s-home",
+           path: "/canvas",
+         },
+         */
         {
           title: "Dashboard",
           icon: "el-icon-s-home",
+          path: "/map",
           children: [
             {
               title: "MapStore",
@@ -47,17 +54,6 @@ export default {
             }
           ]
         },
-        {
-          title: "CanvasBoard",
-          icon: "el-icon-s-home",
-          children: [
-            {
-              title: "canvas",
-              path: "/canvas",
-              icon: "el-icon-s-tools"
-            },
-          ]
-        }
       ]
     }
   },

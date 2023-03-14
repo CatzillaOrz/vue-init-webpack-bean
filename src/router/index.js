@@ -11,7 +11,7 @@ export const constantRouterMap = [
     path: '/',
     name: 'layout',
     component: Layout,
-    redirect: '/login',
+    redirect: '/canvas',
     children: [
       {
         path: '/map',
@@ -36,6 +36,12 @@ export const constantRouterMap = [
         component: _import('form/index'),
         name: 'register',
         meta: { title: 'userRegistry', icon: 'index', noCache: true, },
+      },
+      {
+        path: '/canvas',
+        component: _import('canvas/index'),
+        name: 'canvasZoo',
+        meta: { title: 'canvasZoo', icon: 'index', noCache: true, },
       }
     ],
 

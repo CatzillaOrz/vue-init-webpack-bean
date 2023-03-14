@@ -23,7 +23,7 @@ export default {
       sub_menu: [
         {
           title: "Dashboard",
-          icon: "el-icon-s-tools",
+          icon: "el-icon-s-home",
           children: [
             {
               title: "MapStore",
@@ -45,6 +45,17 @@ export default {
               path: "/register",
               icon: "el-icon-s-tools"
             }
+          ]
+        },
+        {
+          title: "CanvasBoard",
+          icon: "el-icon-s-home",
+          children: [
+            {
+              title: "canvas",
+              path: "/canvas",
+              icon: "el-icon-s-tools"
+            },
           ]
         }
       ]

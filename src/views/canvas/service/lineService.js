@@ -1,6 +1,6 @@
 import { Color } from "../config/color";
 import { CanvasService } from "./canvasService";
-import { createPolygon } from '../utils/polygon.js'
+import { createPolygon, createStar } from '../utils/polygon.js'
 
 export class LineService {
 
@@ -106,6 +106,10 @@ export class LineService {
   polygonHexagon() {
     createPolygon(this._cxt, 6, 450, 175, 50)
     this._cxt.fill()
+  }
+
+  polygonStar() {
+    createStar(this._cxt)
   }
 
 

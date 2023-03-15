@@ -27,6 +27,7 @@ export default {
       this.canvasService.polygonSquare()
       this.canvasService.polygonSpade()
       this.canvasService.polygonHexagon()
+      this.canvasService.polygonStar()
     }
   },
 

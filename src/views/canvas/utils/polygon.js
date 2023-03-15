@@ -13,3 +13,16 @@ export function createPolygon(cxt, n, dx, dy, size) {
   }
   cxt.closePath();
 }
+
+export function createStar(cxt) {
+  cxt.beginPath();
+  for (let i = 0; i < 5; i++) {
+    cxt.lineTo(Math.cos((18 + i * 72) * Math.PI / 180) * 50 + 200,
+      -Math.sin((18 + i * 72) * Math.PI / 180) * 50 + 200);
+    cxt.lineTo(Math.cos((54 + i * 72) * Math.PI / 180) * 25 + 200,
+      -Math.sin((54 + i * 72) * Math.PI / 180) * 25 + 200);
+  }
+  cxt.closePath();
+  cxt.stroke();
+
+}

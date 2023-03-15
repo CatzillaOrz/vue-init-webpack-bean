@@ -32,7 +32,7 @@ export class LineService {
     this._cxt.stroke()
   }
 
-  rect(xy){
+  lineRect(xy){
     const [a1b1, a2b2, c1d1, c2d2 ] = xy;
     this._cxt.moveTo(...a1b1)
     this._cxt.lineTo(...a2b2)
@@ -42,5 +42,13 @@ export class LineService {
     this._cxt.stroke()
 
   }
+
+  rect(xy){
+    //const [x, y, width, height] = xy;
+    this._cxt.strokeStyle = 'red';
+    this._cxt.strokeRect(...xy);
+    this._cxt.stroke()
+  }
+
 
 }

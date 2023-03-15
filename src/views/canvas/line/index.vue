@@ -24,7 +24,8 @@ export default {
   methods: {
     draw() {
       this.canvasService.drawLine([50, 150], [150, 50])
-      this.canvasService.parallelLine([[50, 50], [100, 50], [50, 100], [100, 100]])
+      this.canvasService.parallelLine([[50, 50], [100, 50], [50, 120], [100, 120]])
+      this.canvasService.triangle([[50, 100], [150, 50], [150, 100], [50, 100]])
     }
   },
 }

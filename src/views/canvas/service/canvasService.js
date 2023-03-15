@@ -1,4 +1,5 @@
 export class CanvasService {
+  _cnv;
   _cxt;
 
   constructor(id) {
@@ -10,16 +11,20 @@ export class CanvasService {
     return document.getElementById(this.id)
   }
 
-  _getCxt(){
-    const cnv = this.$$()
-    this._cxt =  cnv.getContext('2d')
+  _getCxt() {
+    this._cnv = this.$$()
+    this._cxt = this._cnv.getContext('2d')
   }
 
   get cxt() {
-    return this._cxt  
+    return this._cxt
   }
 
-  static getCXT(s){
+  get cnv() {
+    return this._cnv
+  }
+
+  static getCXT(s) {
     return s._cxt
   }
 

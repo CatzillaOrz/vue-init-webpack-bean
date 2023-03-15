@@ -6,24 +6,19 @@
 </template>
 
 <script>
+import {CanvasService} from '@/views/canvas/service/canvasService.js'
 export default {
   name: 'drawLine',
 
   data() {
     return {
-      cnv: null,
-      cxt: null
-
+      canvasService:null
     }
   },
 
   mounted() {
-    debugger
-    this.$nextTick(() => {
-      this.cnv = document.getElementById('canvas')
-      this.cxt = this.cnv.getContext('2d')
-      this.drawLine()
-    })
+    this.canvasService = new CanvasService('canvas');
+    this.canvasService.drawLine()
 
   },
   methods: {
@@ -33,8 +28,7 @@ export default {
     drawLine() {
       this.cxt.moveTo(50, 100)
       this.cxt.lineTo(150, 50)
-      this.cxt.stoke()
-
+      this.cxt.stroke()
     }
   },
 }

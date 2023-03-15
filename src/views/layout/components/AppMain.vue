@@ -26,7 +26,7 @@ export default {
 <style lang="scss">
 .app-main {
   height: 100%;
-  margin: 10px auto;
+  margin: 0  auto;
   color: blue;
 }
 </style>

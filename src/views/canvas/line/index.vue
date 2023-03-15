@@ -18,10 +18,14 @@ export default {
 
   mounted() {
     this.canvasService = new CanvasService('canvas');
-    this.canvasService.drawLine()
+    this.draw()
 
   },
   methods: {
+    draw() {
+      this.canvasService.drawLine([50, 150], [150, 50])
+      this.canvasService.parallelLine([[50, 50], [100, 50], [50, 100], [100, 100]])
+    }
   },
 }
 </script>

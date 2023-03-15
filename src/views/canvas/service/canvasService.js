@@ -1,5 +1,5 @@
 export class CanvasService {
-  _cxt
+  _cxt;
 
   constructor(id) {
     this.id = id;
@@ -17,6 +17,10 @@ export class CanvasService {
 
   get cxt() {
     return this._cxt  
+  }
+
+  static getCXT(s){
+    return s._cxt
   }
 
 

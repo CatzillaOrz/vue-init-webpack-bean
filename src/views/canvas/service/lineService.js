@@ -1,5 +1,6 @@
 import { Color } from "../config/color";
 import { CanvasService } from "./canvasService";
+import { createPolygon } from '../utils/polygon.js'
 
 export class LineService {
 
@@ -65,13 +66,50 @@ export class LineService {
     this._cxt.fill()
   }
 
-  clearRect(xy){
+  clearRect(xy) {
     this._cxt.clearRect(...xy)
   }
 
-  clearCanvas(){
+  clearCanvas() {
     this._cxt.clearRect(0, 0, this._cnv.width, this._cnv.height)
   }
+
+  /*Arrow*/
+  arrow() {
+    this._cxt.moveTo(40, 60);
+    this._cxt.lineTo(100, 60);
+    this._cxt.lineTo(100, 30);
+    this._cxt.lineTo(150, 75);
+    this._cxt.lineTo(100, 120);
+    this._cxt.lineTo(100, 90);
+    this._cxt.lineTo(40, 90);
+    this._cxt.lineTo(40, 60);
+    this._cxt.stroke();
+  }
+
+  polygonTriangle() {
+    createPolygon(this._cxt, 3, 100, 175, 50);
+    this._cxt.fillStyle = Color.HOT_PINK;
+    this._cxt.fill();
+  }
+
+  polygonSquare() {
+    createPolygon(this._cxt, 4, 210, 175, 50)
+    this._cxt.fill()
+  }
+
+  polygonSpade() {
+    createPolygon(this._cxt, 5, 310, 175, 50)
+    this._cxt.fill()
+  }
+
+  polygonHexagon() {
+    createPolygon(this._cxt, 6, 450, 175, 50)
+    this._cxt.fill()
+  }
+
+
+
 
 
 }

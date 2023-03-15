@@ -1,7 +1,10 @@
 <template>
   <div>
     line of canvas
-    <canvas id="canvas"></canvas>
+
+    <canvas id="canvas" width="800" height="500">
+    Canvas是一个行内块元素（即inline-block），我们一般需要指定其三个属性：id、width和height。width和height分别定义Canvas的宽度和高度。默认情况下，Canvas的宽度为300px，高度为150px。
+    </canvas>
   </div>
 </template>
 
@@ -37,10 +40,10 @@ export default {
     animation() {
       setTimeout(() => {
         this.canvasService.clearCanvas()
-      }, 3000)
+      }, 1000)
       setTimeout(() => {
         this.draw()
-      }, 4000);
+      }, 2000);
     }
 
   },

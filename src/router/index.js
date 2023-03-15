@@ -50,7 +50,7 @@ export const constantRouterMap = [
         path: '/canvas',
         component: _import('canvas/index'),
         name: 'canvasZoo',
-        redirect: 'line',
+        redirect: 'rect',
         meta: { title: 'canvasZoo', icon: 'index', noCache: true, },
         children: [
           {

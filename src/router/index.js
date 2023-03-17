@@ -62,8 +62,14 @@ export const constantRouterMap = [
           {
             path: '/rect',
             component: _import('canvas/rect/index'),
-            name: 'line',
+            name: 'rect',
             meta: { title: 'canvasRect', icon: 'index', noCache: true, },
+          },
+          {
+            path: '/circle',
+            component: _import('canvas/circle/index'),
+            name: 'circle',
+            meta: { title: 'canvasCircle', icon: 'index', noCache: true, },
           }
         ]
       }

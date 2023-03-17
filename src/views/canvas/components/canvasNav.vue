@@ -23,8 +23,8 @@ export default {
     return {
       sub_menu: [
         {
-          title: 'test',
-          path: '/canvas',
+          title: 'circle',
+          path: '/circle',
           multi: false
         },
         {

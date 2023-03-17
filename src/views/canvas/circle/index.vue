@@ -19,6 +19,10 @@ export default {
   methods: {
     draw() {
       this.canvasService.drawDemoCircle()
+      this.canvasService.drawArcCurveString()
+      this.canvasService.drawCustomCurveLine()
+      this.canvasService.drawArcCurveLineCustom()
+      this.canvasService.drawRoundRect()
     }
   },
 }

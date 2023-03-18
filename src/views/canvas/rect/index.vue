@@ -7,7 +7,7 @@
 
 <script>
 
-import { LineService } from '../service/lineService.js'
+import { CanvasFactory } from '../service/canvasFactory'
 export default {
   name: 'rectLine',
   data() {
@@ -16,7 +16,8 @@ export default {
     }
   },
   mounted() {
-    this.canvasService = new LineService('canvas')
+    const factory = new CanvasFactory('canvas')
+    this.canvasService = factory.createLineService();
     this.draw()
   },
 

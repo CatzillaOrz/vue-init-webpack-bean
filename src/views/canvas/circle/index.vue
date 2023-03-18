@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { CircleService } from '../service/circleService.js'
+import { CanvasFactory } from '../service/canvasFactory.js'
 export default {
   data() {
     return {
@@ -13,7 +13,8 @@ export default {
     }
   },
   mounted() {
-    this.canvasService = new CircleService('canvas');
+    const factory = new CanvasFactory('canvas')
+    this.canvasService = factory.createCircleService();
     this.draw()
   },
   methods: {

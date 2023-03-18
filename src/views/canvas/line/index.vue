@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { LineService } from '@/views/canvas/service/lineService.js'
+import { CanvasFactory } from '../service/canvasFactory';
 export default {
   name: 'drawLine',
 
@@ -20,7 +20,8 @@ export default {
   },
 
   mounted() {
-    this.canvasService = new LineService('canvas');
+    const factory = new CanvasFactory('canvas');
+    this.canvasService =  factory.createLineService()
     this.draw()
     this.animation()
   },

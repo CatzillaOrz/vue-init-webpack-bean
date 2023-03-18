@@ -1,11 +1,9 @@
 import { Color } from "../config/color";
-import { CanvasService } from "./canvasService";
 import { createPolygon, createStar } from '../utils/polygon.js'
 
 export class LineService {
 
-  constructor(id) {
-    const cavs = new CanvasService(id)
+  constructor(cavs) {
     this._cxt = cavs.cxt;
     this._cnv = cavs.cnv;
   }

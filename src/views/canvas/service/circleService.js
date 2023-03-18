@@ -1,9 +1,7 @@
-import { CanvasService } from "./canvasService";
 import { drawRoundSquare,drawArcCurveCustom, drawCircle, drawArcCurve, drawCustomCurveLine } from "../utils/circle";
 import { Color } from "../config/color";
 export class CircleService {
-  constructor(id) {
-    const cavs = new CanvasService(id);
+  constructor(cavs) {
     this._cxt = cavs.cxt;
     this._cnv = cavs.cnv;
   }

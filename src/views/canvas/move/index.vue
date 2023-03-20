@@ -1,33 +1,49 @@
 <template>
   <div>
     <canvas id='canvas' width="500" height="500" style="display: block; border:1px dashed
-        gray;"> </canvas>
+                  gray;"> </canvas>
     <el-button v-stream:click="click$">Move</el-button>
-    <el-button v-stream:click="cancel$">Stop</el-button>
+    <el-button v-stream:click="reset$">Reset</el-button>
+    <div>
+    </div>
   </div>
 </template>
 
 <script>
 import { CanvasFactory } from '../service/canvasFactory.js'
-import { interval } from 'rxjs';
-import { exhaustMap, takeUntil, tap, repeat } from 'rxjs/operators';
+import { debounce, fromEvent, interval } from 'rxjs';
+import { map, exhaustMap, takeUntil, tap, repeat } from 'rxjs/operators';
+
 
 export default {
-  domStreams: ['click$', 'cancel$'],
+  domStreams: ['click$', 'reset$'],
 
   subscriptions() {
     const tick$ = this.click$.pipe(
       exhaustMap(() => interval(500)),
-      tap(() => {
+      map(i => i++),
+      tap((i) => {
+        console.log(i)
         this.moveStepByStep()
       }),
-      takeUntil(this.cancel$),
+      takeUntil(this.reset$),
       repeat(),
-
     )
 
+    const back$ = this.reset$.pipe(
+      tap(_ => {
+        this.reset()
+      })
+    )
+
+    const mouseMove$ = fromEvent(document, 'mousemove')
+    const returnMouse$ = mouseMove$.pipe(
+      tap(x => console.log(x))
+    )
     return {
-      tick$
+      tick$,
+      back$,
+      returnMouse$
     }
   },
 
@@ -50,8 +66,11 @@ export default {
       this.canvasService.clearCanvas()
       this.canvasService.moveBlock()
     },
-    cancel() {
-      console.log('stop')
+    reset() {
+      this.canvasService.reset()
+    },
+    getmouse() {
+      return this.canvasService.getCanvasMouse()
     }
   },
 }

@@ -1,6 +1,7 @@
 import { CircleService } from "./circleService";
 import { CanvasService } from "./canvasService";
 import { LineService } from "./lineService";
+import { AnimationService } from "./canvasAnimation";
 
 export class CanvasFactory {
   constructor(id){
@@ -13,7 +14,10 @@ export class CanvasFactory {
 
   createLineService(){
     return new LineService(this.cavs)
+  }
 
+  createAnimation(){
+    return new AnimationService(this.cavs)
   }
 
 }

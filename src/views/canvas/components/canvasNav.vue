@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-menu class="el-menu-demo" mode="horizontal"  router :default-active="$route.path">
+    <el-menu class="el-menu-demo" mode="horizontal" router :default-active="$route.path">
       <component :is="item.multi ? 'el-submenu' : 'el-menu-item'" v-for="(item, index_i) in sub_menu" :key="index_i"
         :index="item.path">
         <template slot="title">{{ item.title }}</template>
@@ -23,13 +23,13 @@ export default {
     return {
       sub_menu: [
         {
-          title: 'circle',
-          path: '/circle',
+          title: 'Animation',
+          path: '/animation',
           multi: false
         },
         {
-          title: 'rect',
-          path: '/rect',
+          title: 'circle',
+          path: '/circle',
           multi: false
         },
         {
@@ -56,13 +56,18 @@ export default {
             }
           ]
         },
+        {
+          title: 'rect',
+          path: '/rect',
+          multi: false
+        },
       ]
 
     }
   },
 
   methods: {
-    
+
   },
 }
 </script>

@@ -70,6 +70,12 @@ export const constantRouterMap = [
             component: _import('canvas/circle/index'),
             name: 'circle',
             meta: { title: 'canvasCircle', icon: 'index', noCache: true, },
+          },
+          {
+            path: '/animation',
+            component: _import('canvas/move/index'),
+            name: 'animation',
+            meta: { title: 'canvasAnimation', icon: 'index', noCache: true, },
           }
         ]
       }

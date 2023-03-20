@@ -8,10 +8,13 @@ import './plugins/element.js'
 import './styles/index.scss'
 import axios from 'axios'
 import { createPinia, PiniaVuePlugin } from 'pinia'
+import VueRx from 'vue-rx'
+
 
 Vue.config.productionTip = false
-Vue.use(PiniaVuePlugin)
 Vue.prototype.$axios = axios;
+Vue.use(PiniaVuePlugin)
+Vue.use(VueRx)
 const pinia = createPinia()
 
 

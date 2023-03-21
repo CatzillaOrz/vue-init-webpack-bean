@@ -79,6 +79,9 @@ export default {
       return this.canvasService.getCanvasMouse()
     }
   },
+  destroyed() {
+    this.canvasService.removeEnventListener()
+  },
 }
 </script>
 

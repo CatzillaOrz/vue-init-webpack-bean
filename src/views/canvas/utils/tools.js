@@ -3,7 +3,7 @@ export function getMouse(element) {
   //定义一个mouse的对象
   var mouse = { x: 0, y: 0 };
   //为传入的元素添加mousemove事件
-  element.addEventListener( "mousemove", function(e) {
+  element.__mouseEventListener__ = function(e) {
     var x, y;
     //在IE中，event对象是作为window对象的一个属性存在
     var e = e || window.event;
@@ -26,7 +26,13 @@ export function getMouse(element) {
 
     mouse.x = x;
     mouse.y = y;
-  })
+  }
+  element.addEventListener("mousemove", element.__mouseEventListener__)
   //返回值为mouse对象
   return mouse;
+}
+
+export function removeListenerByEl(element, type, fn) {
+  element.removeEventListener(type, fn)
+  console.log(type + ' has been removed')
 }

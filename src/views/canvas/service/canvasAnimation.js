@@ -1,5 +1,5 @@
-import { Color } from "../config/color";
-import {getMouse} from '../utils/tools.js'
+import { removeListenerByEl , getMouse} from "../utils/tools";
+import {Color} from '../config/color.js'
 
 export class AnimationService {
   constructor(cavs) {
@@ -12,7 +12,7 @@ export class AnimationService {
   }
 
   drawBlock() {
-    this._cxt.fillStyle = Color.HOT_PINK;
+    this._cxt.fillStyle = Color.HOT_PINK
     this._cxt.fillRect(30, 30, 50, 50);
   }
 
@@ -33,7 +33,11 @@ export class AnimationService {
     return getMouse(this._cnv)
   }
 
-  get cnv(){
+  removeEnventListener() {
+    removeListenerByEl(this._cnv, 'mousemove', this._cnv.__mouseEventListener__)
+  }
+
+  get cnv() {
     return this._cnv
   }
 

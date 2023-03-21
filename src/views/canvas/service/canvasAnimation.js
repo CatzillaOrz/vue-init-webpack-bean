@@ -33,5 +33,9 @@ export class AnimationService {
     return getMouse(this._cnv)
   }
 
+  get cnv(){
+    return this._cnv
+  }
+
 
 }

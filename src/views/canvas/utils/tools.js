@@ -3,7 +3,7 @@ export function getMouse(element) {
   //定义一个mouse的对象
   var mouse = { x: 0, y: 0 };
   //为传入的元素添加mousemove事件
-  addEvent(element, "mousemove", function(e) {
+  element.addEventListener( "mousemove", function(e) {
     var x, y;
     //在IE中，event对象是作为window对象的一个属性存在
     var e = e || window.event;

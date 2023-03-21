@@ -1,18 +1,20 @@
 <template>
   <div>
+    <div>
+      {{ returnMouse$ ? returnMouse$.x : '' }} - {{ returnMouse$ ? returnMouse$.y : '' }}
+    </div>
     <canvas id='canvas' width="500" height="500" style="display: block; border:1px dashed
-                  gray;"> </canvas>
+                                              gray;"> </canvas>
     <el-button v-stream:click="click$">Move</el-button>
     <el-button v-stream:click="reset$">Reset</el-button>
-    <div>
-    </div>
+
   </div>
 </template>
 
 <script>
 import { CanvasFactory } from '../service/canvasFactory.js'
-import { debounce, fromEvent, interval } from 'rxjs';
-import { map, exhaustMap, takeUntil, tap, repeat } from 'rxjs/operators';
+import { timer, fromEvent, interval } from 'rxjs';
+import { debounce, delay, map, exhaustMap, takeUntil, tap, repeat } from 'rxjs/operators';
 
 
 export default {
@@ -35,28 +37,32 @@ export default {
         this.reset()
       })
     )
-
     const mouseMove$ = fromEvent(document, 'mousemove')
     const returnMouse$ = mouseMove$.pipe(
-      tap(x => console.log(x))
+      map(_ => this.xy),
+      debounce(() => timer(1000)),
+      tap(x => console.log(x.x, x.y)),
+      delay(1000)
     )
+
     return {
       tick$,
       back$,
-      returnMouse$
+      returnMouse$,
     }
   },
 
   data() {
     return {
-      canvasService: null
+      canvasService: null,
+      xy: null
     }
   },
   mounted() {
-
     const factory = new CanvasFactory('canvas')
     this.canvasService = factory.createAnimation();
     this.draw()
+    this.xy = this.getmouse();
   },
   methods: {
     draw() {

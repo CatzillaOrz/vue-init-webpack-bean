@@ -30,7 +30,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .app-login {
   height: 100%;
 }

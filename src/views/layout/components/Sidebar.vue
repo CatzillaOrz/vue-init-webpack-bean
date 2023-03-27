@@ -64,8 +64,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@/styles/variables';
-
 .el-menu {
   height: 100%;
   background: $background-color-base;

@@ -9,7 +9,7 @@ const sourceMapEnabled = isProduction
 module.exports = {
   loaders: utils.cssLoaders({
     sourceMap: sourceMapEnabled,
-    extract: isProduction
+    extract: isProduction,
   }),
   cssSourceMap: sourceMapEnabled,
   cacheBusting: config.dev.cacheBusting,
@@ -18,14 +18,5 @@ module.exports = {
     source: 'src',
     img: 'src',
     image: 'xlink:href'
-  },
-  css: {
-    loaderOptions: {
-      sass: {
-        prependData: `
-          @import "@/assets/theme/vars.scss;
-        `,
-      },
-    },
   },
 }

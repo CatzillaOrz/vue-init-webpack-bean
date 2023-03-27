@@ -60,16 +60,12 @@ exports.cssLoaders = function(options) {
     postcss: generateLoaders(),
     less: generateLoaders('less'),
     sass: generateLoaders('sass', {
-      indentedSyntax: true,
-      data: `
-          @import "~@/styles/variables.scss";
-          @import "~element-ui/packages/theme-chalk/src/common/var.scss";
-                  `,
+      indentedSyntax: true
     }),
     scss: generateLoaders('sass', {
       data: `
-          @import "~@/styles/variables.scss";
           @import "~element-ui/packages/theme-chalk/src/common/var.scss";
+          @import "~@/styles/variables.scss";
                   `,
     }),
     stylus: generateLoaders('stylus'),

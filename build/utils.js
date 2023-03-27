@@ -63,11 +63,13 @@ exports.cssLoaders = function(options) {
       indentedSyntax: true,
       data: `
           @import "~@/styles/variables.scss";
+          @import "~element-ui/packages/theme-chalk/src/common/var.scss";
                   `,
     }),
     scss: generateLoaders('sass', {
       data: `
           @import "~@/styles/variables.scss";
+          @import "~element-ui/packages/theme-chalk/src/common/var.scss";
                   `,
     }),
     stylus: generateLoaders('stylus'),

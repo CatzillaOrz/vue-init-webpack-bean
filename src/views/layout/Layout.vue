@@ -48,7 +48,7 @@ export default {
   .el-container {
     .el-header {
       line-height: 60px;
-      color: $primary;
+      color: $--color-primary;
       display: flex;
       justify-content: space-between;
     }

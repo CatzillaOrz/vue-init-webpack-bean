@@ -66,11 +66,11 @@ export default {
 <style lang="scss" scoped>
 .el-menu {
   height: 100%;
-  background: $background-color-base;
+  background: $--background-color-base;
 
   .el-menu-item {
     &.is-active {
-      background-color: $primary;
+      background-color: $--color-primary;
     }
   }
 }

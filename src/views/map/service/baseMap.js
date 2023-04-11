@@ -1,9 +1,9 @@
 import Map from 'ol/Map';
 import View from 'ol/View';
 import * as olControl from 'ol/control';
-import { Tile as TileLayer} from 'ol/layer';
+import { Tile as TileLayer } from 'ol/layer';
 import XYZ from 'ol/source/XYZ';
-import mapConfig from '@/config/map.config';
+import mapConfig, { zoomConfig } from '@/config/map.config';
 
 
 export class BaseMap {
@@ -18,10 +18,10 @@ export class BaseMap {
 
     this.view = new View({
       center: mapConfig.map_center,
-      zoom: 7,
+      zoom: zoomConfig.zoom,
       projection: mapConfig.map_projection,
-      maxZoom: 10,
-      minZoom: 5
+      maxZoom: zoomConfig.max,
+      minZoom: zoomConfig.min
     });
 
     this.baseLayer.push(new TileLayer({
@@ -34,7 +34,7 @@ export class BaseMap {
     this.map = new Map({
       controls: olControl.defaults({ attribution: false, zoom: false, rotate: false }),
       //.extend([
-       // new olControl.ScaleLine(),
+      // new olControl.ScaleLine(),
       //]),
       target: target,
       layers: this.baseLayer,

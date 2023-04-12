@@ -15,6 +15,7 @@ export class MapService {
   map;
   layerList;
   baseMap;
+  draw;
   drawSource;
 
   constructor() { }

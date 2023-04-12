@@ -8,11 +8,14 @@ import Overlay from 'ol/Overlay';
 import Polygon from 'ol/geom/Polygon';
 import GeoJSON from "ol/format/GeoJSON";
 import mapConfig from "@/config/map.config";
+import Draw, { createBox } from 'ol/interaction/Draw';
+
 
 export class MapService {
   map;
   layerList;
   baseMap;
+  drawSource;
 
   constructor() { }
 
@@ -20,13 +23,21 @@ export class MapService {
     const featureLayer = new VectorLayer({
       source: new VectorSource()
     });
+    this.drawSource = new VectorSource({ wrapX: false });
+    const drawLayer = new VectorLayer({
+      className: 'drawLayer',
+      source: this.drawSource,
+    });
+
     this.layerList = {
       feature: featureLayer,
-      collection: null
+      collection: null,
+      drawLayer
     };
     this.baseMap = new BaseMap();
     this.map = this.baseMap.initBaseMap(mapEle);
     this.map.addLayer(featureLayer);
+    this.map.addLayer(drawLayer);
     return this.map
   }
 
@@ -90,8 +101,8 @@ export class MapService {
     this.clearLayer('feature');
   }
 
-  clearAllCollection(){
-    if(!this.layerList['collection']) return
+  clearAllCollection() {
+    if (!this.layerList['collection']) return
     this.clearLayer('collection')
   }
 
@@ -168,19 +179,19 @@ export class MapService {
 
   drawFeatureCollection(collectionsData) {
     const vectorSource = new VectorSource({
-      features: new GeoJSON({ featureProjection: mapConfig.map_projection}).readFeatures(collectionsData),
+      features: new GeoJSON({ featureProjection: mapConfig.map_projection }).readFeatures(collectionsData),
     });
 
     const style = new Style({
-        stroke: new Stroke({
-          color: "#1D70FF",
-          lineDash: [4],
-          width: 3,
-        }),
-        fill: new Fill({
-          color: "rgba(211, 223, 235, 0.5)",
-        }),
-      })
+      stroke: new Stroke({
+        color: "#1D70FF",
+        lineDash: [4],
+        width: 3,
+      }),
+      fill: new Fill({
+        color: "rgba(211, 223, 235, 0.5)",
+      }),
+    })
     const layer = new VectorLayer({
       source: vectorSource,
       style: style,
@@ -190,6 +201,47 @@ export class MapService {
 
   }
 
+  drawMapShape(type, callback) {
+    const this_ = this;
+    this.map.removeInteraction(this.draw);
+    //清空所有
+    this.drawSource.clear();
+    if (type !== '') {
+      // type = 'Circle';
+      if (type === 'Box') {
+        type = 'Circle';
+        //geometryFunction = createBox();
+        this.draw = new Draw({
+          source: this.drawSource,
+          type,
+          geometryFunction: createBox()
+        });
+      } else {
+        this.draw = new Draw({
+          source: this.drawSource,
+          type
+        });
+      }
+      this.draw.on('drawstart', function(event) {
+        if (this_.drawSource.getFeatures().length !== 0) {
+          this_.drawSource.clear();
+        }
+      });
+      this.draw.on('drawend', (e) => {
+        callback(e.feature.getGeometry(), type);
+      });
+      this.map.addInteraction(this.draw);
+    } else {
+      this.map.removeInteraction(this.draw);
+    }
+  }
+
+  clearDrawShape(isClearAll = false) {
+    if (isClearAll) {
+      this.drwaSource.clear();
+    }
+    this.map.removeInteraction(this.draw);
+  }
 
 }
 

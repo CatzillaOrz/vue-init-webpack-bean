@@ -91,6 +91,10 @@ export default {
       this.drawPoints();
       this.addMapListener()
       this.addMapContextmenuListener();
+      this.mapService.drawMapShape('Polygon', (data)=>{
+          console.log(_.chunk(data.flatCoordinates, 2))
+          this.mapService.clearDrawShape()
+        })
     },
     drawPoints() {
       this.mapService.drawPointFeature(this.list);

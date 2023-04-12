@@ -13,9 +13,9 @@ export const unknownImg = 'assets/images/map/unknown.png';
 export const STARTCENTER = [114.157153, 30.489362];
 
 export const zoomConfig = {
+  zoom: 14,
   max: 17,
   min: 1,
-  zoom: 1,
 };
 
 export default mapConfig;

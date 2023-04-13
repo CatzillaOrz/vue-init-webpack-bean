@@ -91,13 +91,19 @@ export default {
       this.drawPoints();
       this.addMapListener()
       this.addMapContextmenuListener();
-      this.mapService.drawMapShape('Polygon', (data)=>{
-          console.log(_.chunk(data.flatCoordinates, 2))
-          this.mapService.clearDrawShape()
-        })
+      this.mapService.drawMapShape('Polygon', (data) => {
+        console.log(_.chunk(data.flatCoordinates, 2))
+        this.mapService.clearDrawShape()
+      })
     },
     drawPoints() {
       this.mapService.drawPointFeature(this.list);
+      const cd = [[[108.91781849029286,34.22521444584457],[108.89684302404538,34.19811347401231],[108.89068754490928,34.18988258472677],[108.93779718526177,34.187676574711055],[108.94610054388981,34.18815933136642],[108.94660634120373,34.22278002977957],[108.92317354470337,34.22275232777307],[108.91781849029286,34.22521444584457]]]
+     setTimeout(()=>{
+         //this.mapService.drawPolygonFeature('e.id', cd, { id: '0' });
+         this.drawPolygon([cd])
+       }, 1000) 
+
     },
     addMapContextmenuListener() {
       this.mapService.addMapContextmenuEvent((feature) => {
@@ -163,12 +169,12 @@ export default {
     },
     drawPolygon(data) {
       data.forEach(e => {
-        this.mapService.drawPolygonFeature(new Date().getTime(), e);
+        this.mapService.drawPolygonFeature('001', e);
       });
     },
     detail() {
       this.clearOverlay()
-      this.$emit('detail', { data: 'detail' , status: 200})
+      this.$emit('detail', { data: 'detail', status: 200 })
     }
   },
 };

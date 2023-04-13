@@ -3,7 +3,7 @@ import VectorLayer from "ol/layer/Vector";
 import { BaseMap } from './baseMap'
 import Feature from "ol/Feature";
 import Point from "ol/geom/Point";
-import { Fill, Icon, Style, Stroke } from 'ol/style';
+import { Fill, Icon, Text, Style, Stroke } from 'ol/style';
 import Overlay from 'ol/Overlay';
 import Polygon from 'ol/geom/Polygon';
 import GeoJSON from "ol/format/GeoJSON";

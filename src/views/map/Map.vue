@@ -3,14 +3,7 @@
     <div ref="map" class="map"></div>
 
     <div ref="pointInfo" class="pointInfo" :style="{ 'display': cachedDetail && !disableInfo ? 'block' : 'none' }">
-      <p>数据层级：xxx</p>
-      <p>销售区域：xxx</p>
-      <p>生态公司类型：xxx</p>
-      <p>生态公司名称：xxx</p>
-      <p>生态公司产品：xxx</p>
-      <p>部署数量：xxx</p>
-      <p>部署时间：xxx</p>
-      <p>操作人员：xxx</p>
+      <p>数据：xxx</p>
     </div>
     <div ref="editPoint" class="editPoint" :style="{ 'display': contextmenuPopup ? 'flex' : 'none' }">
       <template v-if="contextmenuPopStatus && !disableMenuOption">
@@ -89,8 +82,11 @@ export default {
     initMap() {
       this.map = this.mapService.initMap(this.$refs.map)
       this.drawPoints();
+      //this.drawPolygonMock();
       this.addMapListener()
       this.addMapContextmenuListener();
+    },
+    drawPolygonInteraction() {
       this.mapService.drawMapShape('Polygon', (data) => {
         console.log(_.chunk(data.flatCoordinates, 2))
         this.mapService.clearDrawShape()
@@ -98,11 +94,12 @@ export default {
     },
     drawPoints() {
       this.mapService.drawPointFeature(this.list);
-      const cd = [[[108.91781849029286,34.22521444584457],[108.89684302404538,34.19811347401231],[108.89068754490928,34.18988258472677],[108.93779718526177,34.187676574711055],[108.94610054388981,34.18815933136642],[108.94660634120373,34.22278002977957],[108.92317354470337,34.22275232777307],[108.91781849029286,34.22521444584457]]]
-     setTimeout(()=>{
-         //this.mapService.drawPolygonFeature('e.id', cd, { id: '0' });
-         this.drawPolygon([cd])
-       }, 1000) 
+      const cd = [[[108.91781849029286, 34.22521444584457], [108.89684302404538, 34.19811347401231], [108.89068754490928, 34.18988258472677], [108.93779718526177, 34.187676574711055], [108.94610054388981, 34.18815933136642], [108.94660634120373, 34.22278002977957], [108.92317354470337, 34.22275232777307], [108.91781849029286, 34.22521444584457]]]
+      setTimeout(() => {
+        //this.mapService.drawPolygonFeature('e.id', cd, { id: '0' });
+        this.drawPolygon([cd])
+        this.mapService.featureModify();
+      }, 1000)
 
     },
     addMapContextmenuListener() {

@@ -9,6 +9,7 @@ import Polygon from 'ol/geom/Polygon';
 import GeoJSON from "ol/format/GeoJSON";
 import mapConfig from "@/config/map.config";
 import Draw, { createBox } from 'ol/interaction/Draw';
+import ModifyFeature from 'ol-ext/interaction/ModifyFeature';
 
 
 export class MapService {
@@ -235,6 +236,43 @@ export class MapService {
     } else {
       this.map.removeInteraction(this.draw);
     }
+  }
+
+  featureModify() {
+    debugger
+    //const this_ = this;
+    this.map.removeInteraction(this.draw);
+    //清空所有
+    this.layerList.drawLayer.getSource()
+      .addFeature(new Feature(
+        new Polygon([[[108.91781849029286, 34.22521444584457], [108.89684302404538, 34.19811347401231], [108.89068754490928, 34.18988258472677], [108.93779718526177, 34.187676574711055], [108.94610054388981, 34.18815933136642], [108.94660634120373, 34.22278002977957], [108.92317354470337, 34.22275232777307], [108.91781849029286, 34.22521444584457]]])));
+
+    //this.drawSource.clear();
+    this.draw = new ModifyFeature({
+      sources: this.drawSource,
+    });
+    this.draw.on([ 'modifyend' ], function(e) {
+      // First modify feature
+      var f = e.features[0];
+      var info = e.type + ' ' + (e.features.length || '??') + ' feature(s) : ';
+      info += (f ? f.getGeometry().getType() : '');
+      if (f && f.getGeometry().flatCoordinates) info += ' ' + (f ? (f.getGeometry().flatCoordinates.length / 2) : '?') + ' point(s)'
+      console.log('.options .', info)
+    });
+
+    /*
+        this.draw.on('drawstart', function(event) {
+          if (this_.drawSource.getFeatures().length !== 0) {
+            this_.drawSource.clear();
+          }
+        });
+        this.draw.on('drawend', (e) => {
+          callback(e.feature.getGeometry(), type);
+        });
+    
+        */
+    this.map.addInteraction(this.draw);
+    //  this.map.removeInteraction(this.draw);
   }
 
   clearDrawShape(isClearAll = false) {

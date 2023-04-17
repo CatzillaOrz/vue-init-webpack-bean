@@ -239,7 +239,6 @@ export class MapService {
   }
 
   featureModify() {
-    debugger
     //const this_ = this;
     this.map.removeInteraction(this.draw);
     //清空所有
